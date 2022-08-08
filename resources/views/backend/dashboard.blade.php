@@ -7,6 +7,11 @@
 				<div class="row mb-2">
 					<div class="col-sm-6">
 						<h1 class="m-0">Starter Page</h1>
+						@role('admin')
+							Admin Dashboard (Hi, Admin)
+						@else
+							Dashboard
+						@endrole
 					</div><!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
