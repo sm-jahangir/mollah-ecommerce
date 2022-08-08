@@ -16,6 +16,10 @@
 	<link rel="stylesheet" href="{{ asset('assets/backend') }}/plugins/fontawesome-free/css/all.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{ asset('assets/backend') }}/dist/css/adminlte.min.css">
+
+	{{-- Laravel iziToast --}}
+	<link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
+
 	@stack('css')
 </head>
 
@@ -56,6 +60,12 @@
 	<script src="{{ asset('assets/backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="{{ asset('assets/backend') }}/dist/js/adminlte.min.js"></script>
+	{{-- Laravel iziToast js --}}
+	<script src="{{ asset('js/iziToast.js') }}"></script>
+	@include('vendor.lara-izitoast.toast')
+
+
+
 	@stack('js')
 </body>
 
