@@ -132,7 +132,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img style="margin-top: -6px;" src="{{ isset(Auth::user()->avatar) ? asset('storage/users') . '/' . Auth::user()->avatar : config('app.placeholder') . '/' . '350x150' }}" width="40" height="40" class="rounded-circle">
+							<img style="margin-top: -6px;" src="{{ isset(Auth::user()->avatar) ? asset('uploads/users') . '/' . Auth::user()->avatar : config('app.placeholder') . '/' . '350x150' }}" width="40" height="40" class="rounded-circle">
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="{{ route('app.dashboard') }}">Dashboard</a>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -53,14 +54,23 @@ class UserController extends Controller
             'status' => $request->filled('status'),
         ]);
         // upload images
-        // upload images
+        // if ($request->hasFile('avatar')) {
+        //     $image = $request->file('avatar');
+        //     $ext = $image->extension();
+        //     $file = time() . '.' . $ext;
+        //     $image->storeAs('public/users', $file); //above 4 line process the image code
+        //     $user->avatar =  $file; //ai code ta image ke insert kore
+        //     $user->save();
+        // }
         if ($request->hasFile('avatar')) {
-            $image = $request->file('avatar');
-            $ext = $image->extension();
-            $file = time() . '.' . $ext;
-            $image->storeAs('public/users', $file); //above 4 line process the image code
-            $user->avatar =  $file; //ai code ta image ke insert kore
-            $user->save();
+            // File::delete(public_path('uploads/users/') . $user->avatar);
+            $image       = $request->file('avatar');
+            $filename    = 'avatar-' . time() . '.' . $image->getClientOriginalExtension();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->fit(300, 300);
+            $image_resize->save(public_path('uploads/users/' . $filename));
+            $user->avatar = $filename;
+            $user->update();
         }
         notify()->success('User Successfully Added.', 'Added');
         return redirect()->route('app.users.index');
@@ -107,19 +117,30 @@ class UserController extends Controller
             'status' => $request->filled('status'),
         ]);
         // upload images
-        if (request()->hasFile('avatar') && request('avatar') != '') {
-            $imagePath = public_path('storage/post/' . $user->image);
-            if (File::exists($imagePath)) {
-                unlink($imagePath);
-            }
+        // if (request()->hasFile('avatar') && request('avatar') != '') {
+        //     $imagePath = public_path('storage/post/' . $user->image);
+        //     if (File::exists($imagePath)) {
+        //         unlink($imagePath);
+        //     }
+        //     $image = $request->file('avatar');
+        //     $ext = $image->extension();
+        //     $file = time() . '.' . $ext;
+        //     $image->storeAs('public/users', $file); //above 4 line process the image code
+        //     $user->avatar =  $file; //ai code ta image ke insert kore
+        // }
 
-            $image = $request->file('avatar');
-            $ext = $image->extension();
-            $file = time() . '.' . $ext;
-            $image->storeAs('public/users', $file); //above 4 line process the image code
-            $user->avatar =  $file; //ai code ta image ke insert kore
+        if ($request->hasFile('avatar')) {
+            File::delete(public_path('uploads/users/') . $user->avatar);
+            $image       = $request->file('avatar');
+            $filename    = 'avatar-' . time() . '.' . $image->getClientOriginalExtension();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->fit(300, 300);
+            $image_resize->save(public_path('uploads/users/' . $filename));
+            $user->avatar = $filename;
+            $user->update();
         }
-        $user->save();
+
+
         notify()->success('User Successfully Updated.', 'Updated');
         return redirect()->route('app.users.index');
     }
