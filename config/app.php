@@ -55,6 +55,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'placeholder' => 'https://via.placeholder.com/',
 
     'asset_url' => env('ASSET_URL'),
 

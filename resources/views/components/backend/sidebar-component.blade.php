@@ -37,6 +37,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item  {{ Request::is('app/users*') ? 'menu-open' : '' }}">
+					<a href="{{ route('app.users.index') }}" class="nav-link  {{ Request::is('app/users*') ? 'active' : '' }}">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Users
+						</p>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

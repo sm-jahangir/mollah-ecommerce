@@ -1,3 +1,4 @@
+<!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 	<!-- Left navbar links -->
 	<ul class="navbar-nav">
@@ -5,7 +6,7 @@
 			<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 		</li>
 		<li class="nav-item d-none d-sm-inline-block">
-			<a href="index3.html" class="nav-link">Home</a>
+			<a href="{{ url('/') }}" target="__blank" class="nav-link">Frontend</a>
 		</li>
 		<li class="nav-item d-none d-sm-inline-block">
 			<a href="#" class="nav-link">Contact</a>
@@ -127,9 +128,24 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-				<i class="fas fa-th-large"></i>
-			</a>
+			<div class="collapse navbar-collapse" id="navbar-list-4">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img style="margin-top: -6px;" src="{{ isset(Auth::user()->avatar) ? asset('storage/users') . '/' . Auth::user()->avatar : config('app.placeholder') . '/' . '350x150' }}" width="40" height="40" class="rounded-circle">
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="{{ route('app.dashboard') }}">Dashboard</a>
+							<a class="dropdown-item" href="">Edit Profile</a>
+							<a class="dropdown-item" href="">Change Password</a>
+							<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+								@csrf
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</li>
 	</ul>
 </nav>
