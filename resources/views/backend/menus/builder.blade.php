@@ -23,7 +23,7 @@
 							{{ __('Back to list') }}
 						</a>
 
-						<a href="" class="btn btn-shadow btn-primary">
+						<a href="{{ route('app.menus.item.create', $menu->id) }}" class="btn btn-shadow btn-primary">
 							<i class="fas fa-plus-circle"></i>
 							<span>Create Menu Item</span>
 						</a>
