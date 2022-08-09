@@ -45,6 +45,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item  {{ Request::is('app/pages*') ? 'menu-open' : '' }}">
+					<a href="{{ route('app.pages.index') }}" class="nav-link  {{ Request::is('app/pages*') ? 'active' : '' }}">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Pages
+						</p>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
