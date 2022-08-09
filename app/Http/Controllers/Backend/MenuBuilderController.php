@@ -76,4 +76,36 @@ class MenuBuilderController extends Controller
         notify()->success('Menu Item Successfully Deleted.', 'Deleted');
         return redirect()->back();
     }
+    public function order(Request $request, $id)
+    {
+        Gate::authorize('app.menus.index');
+        $menuItemOrder = json_decode($request->get('order'));
+        $this->orderMenu($menuItemOrder, null);
+    }
+    private function orderMenu(array $menuItems, $parentId)
+    {
+        // foreach ($menuItems as $index => $item) {
+        //     $menuItem = MenuItem::findOrFail($item->id);
+        //     $menuItem->update([
+        //         'order' =>  $index+1,
+        //         'parent_id' =>  $parentId
+        //     ]);
+
+        //     if (isset($item->childern)) {
+        //         $this->orderMenu($item->childern, $menuItem->id);
+        //     }
+        // }
+
+        Gate::authorize('app.menus.index');
+        foreach ($menuItems as $index => $menuItem) {
+            $item = MenuItem::findOrFail($menuItem->id);
+            $item->order = $index + 1;
+            $item->parent_id = $parentId;
+            $item->save();
+
+            if (isset($menuItem->children)) {
+                $this->orderMenu($menuItem->children, $item->id);
+            }
+        }
+    }
 }

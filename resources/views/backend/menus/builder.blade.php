@@ -84,6 +84,37 @@
 												<small class="url">{{ $item->url }}</small>
 											@endif
 										</div>
+										@if (!$item->childs->isEmpty())
+											<ol class="dd-list">
+												@foreach ($item->childs as $childItem)
+													<li class="dd-item" data-id="{{ $childItem->id }}">
+														<div class="pull-right item_actions">
+															<a href="{{ route('app.menus.item.edit', ['id' => $menu->id, 'itemId' => $childItem->id]) }}" class="btn btn-info btn-sm">
+																<i class="fas fa-edit"></i>
+																<span>Edit</span>
+															</a>
+															<button type="button" onclick="deleteData({{ $childItem->id }})" class="btn btn-danger btn-sm">
+																<i class="fas fa-trash-alt    "></i>
+																<span>Delete</span>
+															</button>
+															<form action="{{ route('app.menus.item.destroy', ['id' => $menu->id, 'itemId' => $childItem->id]) }}" method="POST" id="delete-form-{{ $childItem->id }}" style="display: none">
+																@csrf
+																@method('DELETE')
+															</form>
+														</div>
+														<div class="dd-handle">
+															@if ($childItem->type == 'divider')
+																<strong>Divider: {{ $childItem->divider_title }}</strong>
+															@else
+																<span> {{ $childItem->title }} </span>
+																<small class="url">{{ $childItem->url }}</small>
+															@endif
+														</div>
+
+													</li>
+												@endforeach
+											</ol>
+										@endif
 
 									</li>
 								@empty
@@ -129,7 +160,7 @@
 	 });
 	 $('.dd').on('change', function(e) {
 	  console.log(JSON.stringify($('.dd').nestable('serialize')));
-	  $.post('', {
+	  $.post('{{ route('app.menus.order', $menu->id) }}', {
 	    order: JSON.stringify($('.dd').nestable('serialize')),
 	    _token: '{{ csrf_token() }}'
 	   },

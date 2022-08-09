@@ -17,6 +17,7 @@ class Menu extends Model
     public function menuItems()
     {
         return $this->hasMany(MenuItem::class)
-            ->orderBy('order', 'asc');
+            ->doesntHave('parent')
+            ->orderBy('order');
     }
 }
