@@ -28,5 +28,8 @@ Route::group(['as' => 'menus.', 'prefix' => 'menus/{id}/'], function () {
     Route::group(['as' => 'item.', 'prefix' => 'item'], function () {
         Route::get('/create', [MenuBuilderController::class, 'itemCreate'])->name('create');
         Route::post('/store', [MenuBuilderController::class, 'itemStore'])->name('store');
+        Route::get('/{itemId}/edit', [MenuBuilderController::class, 'itemEdit'])->name('edit');
+        Route::put('/{itemId}/update', [MenuBuilderController::class, 'itemUpdate'])->name('update');
+        Route::delete('/{itemId}/destroy', [MenuBuilderController::class, 'itemDestroy'])->name('destroy');
     });
 });
