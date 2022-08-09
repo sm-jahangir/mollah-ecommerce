@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\MenuBuilderController;
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::resource('roles', RoleController::class);
@@ -21,3 +22,6 @@ Route::post('profile/changepassword', [ProfileController::class, 'changepassword
 Route::resource('pages', PageController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy');
 //MenuController
 Route::resource('menus', MenuController::class)->except(['show']);
+Route::group(['as' => 'menus.', 'prefix' => 'menus/{id}/'], function () {
+    Route::get('builder', [MenuBuilderController::class, 'index'])->name('builder');
+});
