@@ -53,6 +53,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item  {{ Request::is('app/menus*') ? 'menu-open' : '' }}">
+					<a href="{{ route('app.menus.index') }}" class="nav-link  {{ Request::is('app/menus*') ? 'active' : '' }}">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Menus
+						</p>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
