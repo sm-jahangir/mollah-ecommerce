@@ -23,6 +23,7 @@ class SidebarComponent extends Component
      */
     public function render()
     {
-        return view('components.backend.sidebar-component');
+        $items = menu('backend-sidebar');
+        return view('components.backend.sidebar-component', compact('items'));
     }
 }
