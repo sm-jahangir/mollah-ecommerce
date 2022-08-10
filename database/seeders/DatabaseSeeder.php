@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(TagSeeder::class);
         $this->call(BrandSeeder::class);
+        $this->call(SizeSeeder::class);
+        $this->call(ColorSeeder::class);
         \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
