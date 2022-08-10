@@ -64,7 +64,17 @@
 													<td class="text-center text-muted">#{{ $key + 1 }}</td>
 
 													<td class="text-center">
-														<img src="" alt="">
+														{{-- @php
+																$x = json_decode($post->gallery);
+															@endphp
+																@foreach ((array) $x as $key => $val)
+																	<img width="50px" src="{{ asset('backend/gallery/' . $val) }}">
+																@endforeach --}}
+														{{-- jodi controller e Post::all() kore return korto tahole ekhane decode korte holo --}}
+
+														@foreach ((array) $product->gallery as $item)
+															<img width="50px" src="{{ asset('uploads/products/gallery/' . $item) }}">
+														@endforeach
 													</td>
 
 													<td width="20%" class="text-center">{{ $product->title }}</td>

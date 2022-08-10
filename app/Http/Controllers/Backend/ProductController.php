@@ -26,6 +26,12 @@ class ProductController extends Controller
     {
         // return Product::latest()->get();
         $products =  Product::latest()->get();
+
+        foreach ($products as $key => $data) {
+            $data->gallery = json_decode($data->gallery);
+        }
+
+        // return $products;
         return view('backend.product.index', compact('products'));
     }
 
@@ -104,7 +110,17 @@ class ProductController extends Controller
             $product->featured_image = $filename;
             $product->save();
         }
-
+        if ($request->hasfile('gallery')) {
+            foreach ($request->file('gallery') as $key => $file) {
+                $name = 'gallery-' . time() . '.' . $file->extension();
+                $image_resize = Image::make($file);
+                $image_resize->fit(300, 300);
+                $image_resize->save(public_path('uploads/products/gallery/' . $name));
+                $data[] = $name;
+            }
+            $product->gallery = json_encode($data);
+            $product->save();
+        }
         $product->categories()->attach($request->categories);
         $product->tags()->attach($request->tags);
         $product->colors()->attach($request->colors);
@@ -203,7 +219,17 @@ class ProductController extends Controller
             $product->featured_image = $filename;
             $product->update();
         }
-
+        if ($request->hasfile('gallery')) {
+            foreach ($request->file('gallery') as $key => $file) {
+                $name = 'gallery-' . time() . '.' . $file->extension();
+                $image_resize = Image::make($file);
+                $image_resize->fit(300, 300);
+                $image_resize->save(public_path('uploads/products/gallery/' . $name));
+                $data[] = $name;
+            }
+            $product->gallery = json_encode($data);
+            $product->update();
+        }
         $product->categories()->sync($request->categories);
         $product->tags()->sync($request->tags);
         $product->colors()->sync($request->colors);
