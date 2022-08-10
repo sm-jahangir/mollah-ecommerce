@@ -112,7 +112,7 @@
 											</div>
 											<div class="form-group">
 												<label for="avatar">Avatar</label>
-												<input type="file" name="avatar" id="avatar" class="dropify @error('avatar') is-invalid @enderror" @isset($user) data-default-file="{{ asset('storage/users') . '/' . $user->avatar }}" @endisset />
+												<input type="file" name="avatar" id="avatar" class="dropify @error('avatar') is-invalid @enderror" @isset($user) data-default-file="{{ asset('uploads/users') . '/' . $user->avatar }}" @endisset />
 
 												@error('avatar')
 													<span class="text-danger" role="alert">
@@ -140,9 +140,9 @@
 @push('js')
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 	<script>
-	 //In your Javascript (external .js resource or <script> tag)
-	 $(document).ready(function() {
-	  $('.dropify').dropify();
-	 });
+		//In your Javascript (external .js resource or <script> tag)
+		$(document).ready(function() {
+			$('.dropify').dropify();
+		});
 	</script>
 @endpush

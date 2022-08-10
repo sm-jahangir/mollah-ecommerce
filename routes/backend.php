@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\MenuBuilderController;
 
@@ -53,3 +54,7 @@ Route::group(['as' => 'settings.', 'prefix' => 'settings'], function () {
     Route::get('socialite', [SettingController::class, 'socialite'])->name('socialite.index');
     Route::patch('socialite', [SettingController::class, 'updatesocialiteSettings'])->name('socialite.update');
 });
+
+
+// Category
+Route::resource('category', CategoryController::class);

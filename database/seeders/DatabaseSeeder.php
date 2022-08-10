@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
         $this->call(MenuSeeder::class);
         $this->call(SettingSeeder::class);
+        $this->call(CategorySeeder::class);
         \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

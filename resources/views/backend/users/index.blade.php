@@ -63,7 +63,7 @@
 													<td class="text-center text-muted">#{{ $key + 1 }}</td>
 													<td class="text-center">
 														<div class="widget-content-wrapper float-left">
-															<img width="40" class="rounded-circle" src="{{ $user->avatar ? asset('storage/users') . '/' . $user->avatar : config('app.placeholder') . '/' . '350x150' }}" alt="User Avatar">
+															<img width="40" class="rounded-circle" src="{{ $user->avatar ? asset('uploads/users') . '/' . $user->avatar : config('app.placeholder') . '/' . '350x150' }}" alt="User Avatar">
 														</div>
 														<div>
 															{{ $user->name }} <br>
@@ -126,25 +126,25 @@
 
 
 	<script>
-	 $(document).ready(function() {
-	  // Datatable
-	  $("#datatable").DataTable();
-	 });
+		$(document).ready(function() {
+			// Datatable
+			$("#datatable").DataTable();
+		});
 
-	 function deleteData(id) {
-	  Swal.fire({
-	   title: 'Are you sure?',
-	   text: "You won't be able to revert this!",
-	   icon: 'warning',
-	   showCancelButton: true,
-	   confirmButtonColor: '#3085d6',
-	   cancelButtonColor: '#d33',
-	   confirmButtonText: 'Yes, delete it!'
-	  }).then((result) => {
-	   if (result.value) {
-	    document.getElementById('delete-form-' + id).submit();
-	   }
-	  })
-	 }
+		function deleteData(id) {
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+				if (result.value) {
+					document.getElementById('delete-form-' + id).submit();
+				}
+			})
+		}
 	</script>
 @endpush
