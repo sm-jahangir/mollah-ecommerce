@@ -9,4 +9,10 @@ class Tag extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    // Products Relationship
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withTimestamps();
+    }
 }

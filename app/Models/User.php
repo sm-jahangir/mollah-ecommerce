@@ -51,4 +51,10 @@ class User extends Authenticatable
     {
         return $this->role->permissions()->where('slug', $permission)->first() ? true : false;
     }
+
+    // Product Relationship
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
