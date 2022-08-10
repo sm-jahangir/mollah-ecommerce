@@ -14,69 +14,63 @@
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
-						<h1 class="m-0">Starter Page</h1>
+						<h1 class="m-0">Tag List</h1>
 					</div><!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item"><a href="#">Home</a></li>
-							<li class="breadcrumb-item active">Starter Page</li>
+							<li class="breadcrumb-item active">Tag List</li>
 						</ol>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
 			</div><!-- /.container-fluid -->
 		</div>
 		<!-- /.content-header -->
-
 		<!-- Main content -->
 		<div class="content">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col col-md-12">
-
 						<div class="card">
 							<div class="card-header">
 								<div class="row">
 									<div class="col">
-										<h4>Category List</h4>
+										<h4>Tag List</h4>
 									</div>
 									<div class="col">
-										<a href="{{ route('app.category.create') }}" class="btn btn-success float-right">Create New</a>
+										<a href="{{ route('app.tags.create') }}" class="btn btn-success float-right">Create
+											New</a>
 									</div>
 								</div>
 							</div>
 							<div class="card-body">
-
 								<div class="table-responsive">
 									<table id="datatable" class="align-middle mb-0 table table-borderless table-striped table-hover">
 										<thead>
 											<tr>
 												<th class="text-center">#</th>
 												<th class="text-center">Name</th>
-												<th class="text-center">Parent</th>
-												<th class="text-center">Last Update</th>
+												<th class="text-center">Joined At</th>
 												<th class="text-center">Actions</th>
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($categories as $key => $category)
+											@foreach ($tags as $key => $tag)
 												<tr>
 													<td class="text-center text-muted">#{{ $key + 1 }}</td>
-													@if ($category->parent_id)
-														<td class="text-center">--{{ $category->name }}</td>
-													@else
-														<td class="text-center">{{ $category->name }}</td>
-													@endif
-													<td class="text-center">{{ $category->parent_id }}</td>
-													<td class="text-center">{{ $category->updated_at->diffForHumans() }}</td>
 													<td class="text-center">
-														<a class="btn btn-info btn-sm" href="{{ route('app.category.edit', $category->id) }}"><i class="fas fa-edit"></i>
+														{{ $tag->name }}
+													</td>
+													<td class="text-center">{{ $tag->created_at->diffForHumans() }}</td>
+													<td class="text-center">
+														<a class="btn btn-info btn-sm" href="{{ route('app.tags.edit', $tag->id) }}"><i class="fas fa-edit"></i>
 															<span>Edit</span>
 														</a>
-														<button type="button" class="btn btn-danger btn-sm" onclick="deleteData({{ $category->id }})">
+														<button type="button" class="btn btn-danger btn-sm" onclick="deleteData({{ $tag->id }})">
 															<i class="fas fa-trash-alt"></i>
 															<span>Delete</span>
 														</button>
-														<form id="delete-form-{{ $category->id }}" action="{{ route('app.category.destroy', $category->id) }}" method="POST" style="display: none;">
+														<form id="delete-form-{{ $tag->id }}" action="{{ route('app.tags.destroy', $tag->id) }}" method="POST" style="display: none;">
 															@csrf()
 															@method('DELETE')
 														</form>
@@ -96,11 +90,7 @@
 		</div>
 		<!-- /.content -->
 	</div>
-
-
-
 @endsection
-
 @push('js')
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- DataTables  & Plugins -->

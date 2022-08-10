@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title', 'Categorys')
+@section('title', 'Brands')
 
 @push('css')
 	<!-- DataTables -->
@@ -37,10 +37,11 @@
 							<div class="card-header">
 								<div class="row">
 									<div class="col">
-										<h4>Category List</h4>
+										<h4>Brand List</h4>
 									</div>
 									<div class="col">
-										<a href="{{ route('app.category.create') }}" class="btn btn-success float-right">Create New</a>
+										<a href="{{ route('app.brand.create') }}" class="btn btn-success float-right">Create
+											New</a>
 									</div>
 								</div>
 							</div>
@@ -52,31 +53,25 @@
 											<tr>
 												<th class="text-center">#</th>
 												<th class="text-center">Name</th>
-												<th class="text-center">Parent</th>
 												<th class="text-center">Last Update</th>
 												<th class="text-center">Actions</th>
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($categories as $key => $category)
+											@foreach ($brands as $key => $brand)
 												<tr>
 													<td class="text-center text-muted">#{{ $key + 1 }}</td>
-													@if ($category->parent_id)
-														<td class="text-center">--{{ $category->name }}</td>
-													@else
-														<td class="text-center">{{ $category->name }}</td>
-													@endif
-													<td class="text-center">{{ $category->parent_id }}</td>
-													<td class="text-center">{{ $category->updated_at->diffForHumans() }}</td>
+													<td class="text-center">{{ $brand->name }}</td>
+													<td class="text-center">{{ $brand->updated_at->diffForHumans() }}</td>
 													<td class="text-center">
-														<a class="btn btn-info btn-sm" href="{{ route('app.category.edit', $category->id) }}"><i class="fas fa-edit"></i>
+														<a class="btn btn-info btn-sm" href="{{ route('app.brand.edit', $brand->id) }}"><i class="fas fa-edit"></i>
 															<span>Edit</span>
 														</a>
-														<button type="button" class="btn btn-danger btn-sm" onclick="deleteData({{ $category->id }})">
+														<button type="button" class="btn btn-danger btn-sm" onclick="deleteData({{ $brand->id }})">
 															<i class="fas fa-trash-alt"></i>
 															<span>Delete</span>
 														</button>
-														<form id="delete-form-{{ $category->id }}" action="{{ route('app.category.destroy', $category->id) }}" method="POST" style="display: none;">
+														<form id="delete-form-{{ $brand->id }}" action="{{ route('app.brand.destroy', $brand->id) }}" method="POST" style="display: none;">
 															@csrf()
 															@method('DELETE')
 														</form>
