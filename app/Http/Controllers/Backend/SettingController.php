@@ -29,7 +29,7 @@ class SettingController extends Controller
         Setting::updateOrCreate(['name' => 'video_3'], ['value' => $request->get('video_3')]);
 
         // Update .env file
-        // Artisan::call("env:set APP_NAME='" . $request->site_title . "'");
+        Artisan::call("env:set APP_NAME='" . $request->site_title . "'");
         notify()->success('Settings Successfully Updated.', 'Success');
         Setting::updateOrCreate(['name' => 'site_description'], ['value' => $request->get('site_description')]);
         Setting::updateOrCreate(['name' => 'site_address'], ['value' => $request->get('site_address')]);
@@ -104,14 +104,14 @@ class SettingController extends Controller
         Setting::updateOrCreate(['name' => 'mail_from_name'], ['value' => $request->get('mail_from_name')]);
 
         // Update .env mail settings
-        // Artisan::call("env:set MAIL_MAILER='" . $request->mail_mailer . "'");
-        // Artisan::call("env:set MAIL_HOST='" . $request->mail_host . "'");
-        // Artisan::call("env:set MAIL_PORT='" . $request->mail_port . "'");
-        // Artisan::call("env:set MAIL_USERNAME='" . $request->mail_username . "'");
-        // Artisan::call("env:set MAIL_PASSWORD='" . $request->mail_password . "'");
-        // Artisan::call("env:set MAIL_ENCRYPTION='" . $request->mail_encryption . "'");
-        // Artisan::call("env:set MAIL_FROM_ADDRESS='" . $request->mail_from_address . "'");
-        // Artisan::call("env:set MAIL_FROM_NAME='" . $request->mail_from_name . "'");
+        Artisan::call("env:set MAIL_MAILER='" . $request->mail_mailer . "'");
+        Artisan::call("env:set MAIL_HOST='" . $request->mail_host . "'");
+        Artisan::call("env:set MAIL_PORT='" . $request->mail_port . "'");
+        Artisan::call("env:set MAIL_USERNAME='" . $request->mail_username . "'");
+        Artisan::call("env:set MAIL_PASSWORD='" . $request->mail_password . "'");
+        Artisan::call("env:set MAIL_ENCRYPTION='" . $request->mail_encryption . "'");
+        Artisan::call("env:set MAIL_FROM_ADDRESS='" . $request->mail_from_address . "'");
+        Artisan::call("env:set MAIL_FROM_NAME='" . $request->mail_from_name . "'");
         notify()->success('Settings Successfully Updated.', 'Success');
         return back();
     }
@@ -144,14 +144,14 @@ class SettingController extends Controller
         Setting::updateOrCreate(['name' => 'github_client_secret'], ['value' => $request->get('github_client_secret')]);
 
         // Update .env file
-        // Artisan::call("env:set FACEBOOK_CLIENT_ID='" . $request->facebook_client_id . "'");
-        // Artisan::call("env:set FACEBOOK_CLIENT_SECRET='" . $request->facebook_client_secret . "'");
+        Artisan::call("env:set FACEBOOK_CLIENT_ID='" . $request->facebook_client_id . "'");
+        Artisan::call("env:set FACEBOOK_CLIENT_SECRET='" . $request->facebook_client_secret . "'");
 
-        // Artisan::call("env:set GOOGLE_CLIENT_ID='" . $request->google_client_id . "'");
-        // Artisan::call("env:set GOOGLE_CLIENT_SECRET='" . $request->google_client_secret . "'");
+        Artisan::call("env:set GOOGLE_CLIENT_ID='" . $request->google_client_id . "'");
+        Artisan::call("env:set GOOGLE_CLIENT_SECRET='" . $request->google_client_secret . "'");
 
-        // Artisan::call("env:set GITHUB_CLIENT_ID='" . $request->github_client_id . "'");
-        // Artisan::call("env:set GITHUB_CLIENT_SECRET='" . $request->github_client_secret . "'");
+        Artisan::call("env:set GITHUB_CLIENT_ID='" . $request->github_client_id . "'");
+        Artisan::call("env:set GITHUB_CLIENT_SECRET='" . $request->github_client_secret . "'");
 
         notify()->success('Settings Successfully Updated.', 'Success');
         return back();

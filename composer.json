@@ -9,6 +9,7 @@
         "appslabke/lara-izitoast": "^1.1",
         "browner12/helpers": "^3.4",
         "guzzlehttp/guzzle": "^7.2",
+        "imliam/laravel-env-set-command": "1.0",
         "intervention/image": "^2.7",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
