@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SizeSeeder::class);
         $this->call(ColorSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(SliderSeeder::class);
         \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
