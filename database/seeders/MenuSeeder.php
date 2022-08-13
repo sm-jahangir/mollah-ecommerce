@@ -25,13 +25,12 @@ class MenuSeeder extends Seeder
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 5, 'title' => 'Tags', 'url' => "/app/tags", 'icon_class' => 'fas fa-tags']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 6, 'title' => 'Brand', 'url' => "/app/brand", 'icon_class' => 'fab fa-bandcamp']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 7, 'title' => 'Ads', 'url' => "/app/ads", 'icon_class' => 'fab fa-goodreads']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 8, 'divider_title' => 'Products']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 9, 'title' => 'Ecommerce', 'url' => "#", 'icon_class' => 'fas fa-shopping-cart']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => 9, 'order' => 10, 'title' => 'Products', 'url' => "/app/product", 'icon_class' => 'fab fa-product-hunt']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => 9, 'order' => 11, 'title' => 'Colors', 'url' => "/app/color", 'icon_class' => 'fas fa-paint-brush']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => 9, 'order' => 12, 'title' => 'Sizes', 'url' => "/app/size", 'icon_class' => 'fas fa-sitemap']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => 9, 'order' => 14, 'title' => 'Coupons', 'url' => "/app/coupons", 'icon_class' => 'fas fa-gift']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => 9, 'order' => 15, 'title' => 'Orders', 'url' => "/app/orders", 'icon_class' => 'fas fa-bags-shopping']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 8, 'divider_title' => 'Ecommerce']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 10, 'title' => 'Products', 'url' => "/app/product", 'icon_class' => 'fas fa-shopping-cart']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 11, 'title' => 'Colors', 'url' => "/app/color", 'icon_class' => 'fas fa-paint-brush']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 12, 'title' => 'Sizes', 'url' => "/app/size", 'icon_class' => 'fas fa-sitemap']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 14, 'title' => 'Coupons', 'url' => "/app/coupons", 'icon_class' => 'fas fa-gift']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 15, 'title' => 'Orders', 'url' => "/app/orders", 'icon_class' => 'fab fa-first-order-alt']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 16, 'title' => 'Sliders', 'url' => "/app/slider", 'icon_class' => 'fas fa-spider']);
 
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 17, 'divider_title' => 'Access Control']);
