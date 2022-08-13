@@ -33,15 +33,13 @@
 								</a>
 							</li>
 						@else
-							<li @foreach ($item->childs as $child) @if (Request::is(ltrim($child->url, '/') . '*'))
+							<li @foreach ($item->childs as $child) @if ($child)
 									class="nav-item menu-open"
-									@break
 								@else
 								class="nav-item" @endif @endforeach
 								>
-								<a href="{{ $item->url }}" @foreach ($item->childs as $child) @if (Request::is(ltrim($child->url, '/') . '*'))
+								<a href="{{ $item->url }}" @foreach ($item->childs as $child) @if ($child)
 									class="nav-link active"
-									@break
 								@else
 								class="nav-link" @endif @endforeach
 									>
@@ -55,7 +53,7 @@
 									@foreach ($item->childs as $child)
 										<li class="nav-item">
 											<a href="{{ $child->url }}" class="nav-link {{ Request::is(ltrim($child->url, '/') . '*') ? 'active' : '' }}">
-												<i class="far {{ $child->icon_class }}"></i>
+												<i class="{{ $child->icon_class }}"></i>
 												<p>{{ $child->title }}</p>
 											</a>
 										</li>
