@@ -82,11 +82,11 @@
 													<td class="text-center">{{ $product->updated_at->diffForHumans() }}</td>
 													<td class="text-center">
 														<a class="btn btn-info btn-sm" href="{{ route('app.product.edit', $product->id) }}"><i class="fas fa-edit"></i>
-															<span>Edit</span>
+														</a>
+														<a class="btn btn-success btn-sm" href="{{ route('app.product.show', $product->id) }}"><i class="fas fa-eye"></i>
 														</a>
 														<button type="button" class="btn btn-danger btn-sm" onclick="deleteData({{ $product->id }})">
 															<i class="fas fa-trash-alt"></i>
-															<span>Delete</span>
 														</button>
 														<form id="delete-form-{{ $product->id }}" action="{{ route('app.product.destroy', $product->id) }}" method="POST" style="display: none;">
 															@csrf()
@@ -114,6 +114,7 @@
 @endsection
 
 @push('js')
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- DataTables  & Plugins -->
 	<script src="{{ asset('assets/backend') }}/plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="{{ asset('assets/backend') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

@@ -92,6 +92,7 @@
 	</div>
 @endsection
 @push('js')
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- DataTables  & Plugins -->
 	<script src="{{ asset('assets/backend') }}/plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="{{ asset('assets/backend') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
