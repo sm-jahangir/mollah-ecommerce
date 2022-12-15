@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->decimal('value');
             $table->decimal('cart_value');
-            $table->date('expiry_date')->default(DB::raw('CURRENT_DATE'));
+            $table->date('expiry_date')->useCurrent();;
             $table->timestamps();
         });
     }
